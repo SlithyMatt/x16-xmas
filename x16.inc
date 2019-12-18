@@ -1,8 +1,6 @@
 .ifndef X16_INC
 X16_INC  = 1
 
-__CX16__ = 1
-
 ; RAM Addresses
 
 ; Kernal Registers

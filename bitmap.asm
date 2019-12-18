@@ -5,12 +5,12 @@ BITMAP_INC = 1
 .include "loadbank.asm"
 
 BITMAP_CHANGE_PERIOD = 240
-NUM_BITMAPS = 1
+NUM_BITMAPS = 4
 FULL_BANKS_PER_BITMAP = 9
 LAST_BITMAP_BANK_END_OFFSET = $C00
 
 __bitmap_change_ticks: .byte 0
-__bitmap_idx: .byte 0
+__bitmap_idx: .byte 3
 __bitmap_banks: .byte BM1_BANK, BM2_BANK, BM3_BANK, BM4_BANK
 __bitmap_last_bank: .byte 0
 
