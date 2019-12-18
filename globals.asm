@@ -7,6 +7,7 @@ GLOBALS_INC = 1
 
 MUSIC_PTR      = $08
 
+VRAM_TEXT      = $00000
 VRAM_BITMAP    = $04000 ; 8bpp 320x240
 
 MUSIC_BANK     = 0

@@ -8,14 +8,18 @@
    jmp start
 
 .include "loadbank.asm"
-.include "loadvram.asm"
 .include "irq.asm"
 .include "vsync.asm"
 .include "globals.asm"
 
 start:
 
-   ; TODO: setup layer 1 - 256-color text
+   stz VERA_ctrl
+   VERA_SET_ADDR VRAM_layer1, 1  ; configure VRAM layer 1
+   lda #$21
+   sta VERA_data0 ; 256-color text
+
+   ; TODO clear text
 
    VERA_SET_ADDR VRAM_hscale, 1  ; set display to 2x scale
    lda #64
@@ -24,8 +28,6 @@ start:
 
    ; store binaries to banked RAM
    jsr loadbank
-
-   ; TODO: load first bitmap into VRAM
 
    ; configure layer 0 for background bitmap
    stz VERA_ctrl

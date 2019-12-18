@@ -62,7 +62,7 @@ int main(int argc, char **argv) {
    fread(idata,1,4,ifp);
    clock_factor = X16_CLOCK / (double)((int)idata[0] + (((int)idata[1]) << 8) +
                   (((int)idata[2]) << 16) + (((int)idata[3]) << 24));
-   printf("clock_factor: %f\n", clock_factor);
+   //printf("clock_factor: %f\n", clock_factor);
 
    fseek(ifp,VGM_DO,SEEK_SET);
    fread(idata,1,4,ifp);
