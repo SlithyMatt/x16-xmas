@@ -6,7 +6,7 @@
 #define DONE_REG  4
 #define OPM_CLOCK 0x30
 #define VGM_DO    0x34
-#define X16_CLOCK 5000000
+#define X16_CLOCK 3579545
 
 int main(int argc, char **argv) {
    FILE *ifp;
