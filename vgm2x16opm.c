@@ -4,9 +4,7 @@
 
 #define DELAY_REG 2
 #define DONE_REG  4
-#define OPM_CLOCK 0x30
 #define VGM_DO    0x34
-#define X16_CLOCK 3579545
 
 int main(int argc, char **argv) {
    FILE *ifp;
@@ -58,12 +56,6 @@ int main(int argc, char **argv) {
       return -1;
    }
 
-   fseek(ifp,OPM_CLOCK,SEEK_SET);
-   fread(idata,1,4,ifp);
-   clock_factor = X16_CLOCK / (double)((int)idata[0] + (((int)idata[1]) << 8) +
-                  (((int)idata[2]) << 16) + (((int)idata[3]) << 24));
-   //printf("clock_factor: %f\n", clock_factor);
-
    fseek(ifp,VGM_DO,SEEK_SET);
    fread(idata,1,4,ifp);
    data_offset = VGM_DO + (int)idata[0] + (((int)idata[1]) << 8) +
@@ -82,7 +74,7 @@ int main(int argc, char **argv) {
             odata[0] = DELAY_REG;
             delay = ((int)idata[0] + (((int)idata[1]) << 8))/735;
             // write as delay of VSCAN ticks
-            odata[1] = (uint8_t)(delay * clock_factor);
+            odata[1] = (uint8_t)delay;
             fwrite(odata,1,2,ofp);
             break;
          case 0x62: // Wait 735 samples (1 NTSC VSYNC tick)

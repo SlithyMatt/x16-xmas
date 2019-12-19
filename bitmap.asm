@@ -4,24 +4,35 @@ BITMAP_INC = 1
 .include "x16.inc"
 .include "loadbank.asm"
 
-BITMAP_CHANGE_PERIOD = 240
+BITMAP_CHANGE_PERIOD = 600
 NUM_BITMAPS = 4
 FULL_BANKS_PER_BITMAP = 9
 LAST_BITMAP_BANK_END_OFFSET = $C00
 
-__bitmap_change_ticks: .byte 0
+__bitmap_change_ticks: .word 0
 __bitmap_idx: .byte 3
 __bitmap_banks: .byte BM1_BANK, BM2_BANK, BM3_BANK, BM4_BANK
 __bitmap_last_bank: .byte 0
 
 bitmap_tick:
    lda __bitmap_change_ticks
+   bne @decrement
+   lda __bitmap_change_ticks+1
    beq @change
-   dec __bitmap_change_ticks
+@decrement:
+   sec
+   lda __bitmap_change_ticks
+   sbc #1
+   sta __bitmap_change_ticks
+   lda __bitmap_change_ticks+1
+   sbc #0
+   sta __bitmap_change_ticks+1
    jmp @return
 @change:
-   lda #BITMAP_CHANGE_PERIOD
+   lda #<BITMAP_CHANGE_PERIOD
    sta __bitmap_change_ticks
+   lda #>BITMAP_CHANGE_PERIOD
+   sta __bitmap_change_ticks+1
    inc __bitmap_idx
    lda __bitmap_idx
    cmp #NUM_BITMAPS
