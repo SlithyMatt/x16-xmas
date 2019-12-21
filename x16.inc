@@ -3,10 +3,6 @@ X16_INC  = 1
 
 ; RAM Addresses
 
-; Kernal Registers
-JOY1					= $02BC
-JOY2					= $02BF
-
 ; Zero-Page userspace
 ZP_PTR_1 = $00
 ZP_PTR_2 = $02
@@ -38,8 +34,6 @@ RAM_WIN_SIZE      = $2000
 ROM_WIN           = $C000
 
 ; Kernal Subroutines
-GETJOY			:= $FF06
-MOUSE				:= $FF09
 SETLFS   		:= $FFBA
 SETNAM   		:= $FFBD
 LOAD     		:= $FFD5
