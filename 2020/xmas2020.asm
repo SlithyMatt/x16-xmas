@@ -74,7 +74,7 @@ start:
    bne @clear_loop
 
    ; Setup 256-color text on layer 1
-   lda #$98                      ; 128x64 256-color text
+   lda #$68                      ; 128x64 256-color text
    sta VERA_L1_config
    lda #((VRAM_TEXT >> 9) & $FF)
    sta VERA_L1_mapbase

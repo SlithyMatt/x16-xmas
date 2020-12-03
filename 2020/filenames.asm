@@ -14,7 +14,7 @@ bm2_fn:        .asciiz "bitmap2.bin"
 bm3_fn:        .asciiz "bitmap3.bin"
 bm4_fn:        .asciiz "bitmap4.bin"
 end_filenames:
-FILES_TO_LOAD = 5
+FILES_TO_LOAD = 9
 bankparams:
 .byte PAL1_BANK
 .byte pal2_fn-pal1_fn-1
