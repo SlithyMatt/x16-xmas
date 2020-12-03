@@ -40,9 +40,9 @@ TEXT_LINE4_VRAM = $01D00
 .charmap $5f, $1f
 
 __text_line1:
-.byte " MERRY CHRISTMAS!                                                                         HAPPY NEW YEAR 2021!                  "
+.byte "  MERRY CHRISTMAS!                                                                        HAPPY NEW YEAR 2021!                  "
 __text_line2:
-.byte "                     HAPPY HOLIDAYS!                                                                             PEACE ON EARTH "
+.byte "                      HAPPY HOLIDAYS!                                                                            PEACE ON EARTH "
 __text_line3:
 .byte "                                           ALL I WANT FOR CHRISTMAS IS A COMMANDER X16                                          "
 __text_line4:
