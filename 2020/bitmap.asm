@@ -13,7 +13,7 @@ __bitmap_change_ticks: .word 0
 __bitmap_idx: .byte 3
 __bitmap_banks: .byte BM1_BANK, BM2_BANK, BM3_BANK, BM4_BANK
 __bitmap_last_bank: .byte 0
-__pal_banks: .byte PAL4_BANK, PAL4_BANK, PAL4_BANK, PAL4_BANK
+__pal_banks: .byte PAL1_BANK, PAL2_BANK, PAL3_BANK, PAL4_BANK
 
 bitmap_tick:
    lda __bitmap_change_ticks
@@ -30,6 +30,8 @@ bitmap_tick:
    sta __bitmap_change_ticks+1
    jmp @return
 @change:
+   lda #$21
+   sta VERA_dc_video
    lda #<BITMAP_CHANGE_PERIOD
    sta __bitmap_change_ticks
    lda #>BITMAP_CHANGE_PERIOD
@@ -67,6 +69,8 @@ bitmap_tick:
    ldx #0
    ldy #(512 >> 5)
    jsr bank2vram
+   lda #$31
+   sta VERA_dc_video
 @return:
    rts
 
