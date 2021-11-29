@@ -21,5 +21,6 @@ PAL2_BANK      = 43
 PAL3_BANK      = 44
 PAL4_BANK      = 45
 
+change_trig: .byte 0
 
 .endif

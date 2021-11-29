@@ -27,9 +27,13 @@ handle_irq:
    lda VERA_isr
    and #$01
    beq @done_vsync
+   lda RAM_BANK
+   pha
    jsr music_tick
    jsr text_tick
    jsr bitmap_tick
+   pla
+   sta RAM_BANK
 
 @done_vsync:
 

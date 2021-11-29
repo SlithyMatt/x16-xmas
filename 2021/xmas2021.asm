@@ -112,4 +112,8 @@ start:
 
 mainloop:
    wai
+   lda change_trig
+   beq mainloop
+   jsr change_bitmap
+   stz change_trig
    bra mainloop  ; loop forever

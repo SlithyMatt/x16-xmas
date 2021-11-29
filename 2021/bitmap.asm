@@ -4,7 +4,7 @@ BITMAP_INC = 1
 .include "x16.inc"
 .include "loadbank.asm"
 
-BITMAP_CHANGE_PERIOD = 550
+BITMAP_CHANGE_PERIOD = 600
 NUM_BITMAPS = 4
 FULL_BANKS_PER_BITMAP = 9
 LAST_BITMAP_BANK_END_OFFSET = $C00
@@ -30,6 +30,12 @@ bitmap_tick:
    sta __bitmap_change_ticks+1
    jmp @return
 @change:
+   lda #1
+   sta change_trig
+@return:
+   rts
+
+change_bitmap:
    lda #$21
    sta VERA_dc_video
    lda #<BITMAP_CHANGE_PERIOD
@@ -71,8 +77,6 @@ bitmap_tick:
    jsr bank2vram
    lda #$31
    sta VERA_dc_video
-@return:
    rts
-
 
 .endif

@@ -43,6 +43,7 @@ music_tick:
    bra @write
 @delay:
    lda (MUSIC_PTR),y
+   dec
    sta __music_delay
    INC_MUSIC_PTR
    bra @return
