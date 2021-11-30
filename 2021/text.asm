@@ -46,7 +46,7 @@ __text_line2:
 __text_line3:
 .byte "                                           ALL I WANT FOR CHRISTMAS IS A COMMANDER X16                                          "
 __text_line4:
-.byte "                                                                                  FOR DA=1TO12:PRINT",$22,"XMAS!",$22,":NEXT DAY            "
+.byte "                                                                                 FOR DAY=1TO12:PRINT",$22,"XMAS!",$22,":NEXT DAY            "
 
 TEXT_LINE1_COLOR = $01
 TEXT_LINE2_COLOR = $02
